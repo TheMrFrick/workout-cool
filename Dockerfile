@@ -16,7 +16,7 @@ COPY --from=deps /app/prisma ./prisma
 COPY . .
 COPY .env.example .env
 
-RUN pnpm run build
+RUN NODE_ENV=production pnpm run build
 
 # Production image, copy only necessary files
 FROM base AS runner
