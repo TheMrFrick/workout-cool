@@ -1,11 +1,11 @@
 FROM node:20-alpine AS base
 
 WORKDIR /app
-RUN npm install -g pnpm
+RUN npm install -g pnpm@11.22.0
 
 # Install dependencies
 FROM base AS deps
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY prisma ./prisma
 RUN pnpm install --frozen-lockfile
 
